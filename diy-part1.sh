@@ -25,12 +25,17 @@ sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.de
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 # Add openclash package
-mkdir package/luci-app-openclash
-cd package/luci-app-openclash
-git init
-git remote add -f origin https://github.com/vernesong/OpenClash.git
-git config core.sparsecheckout true
-echo "luci-app-openclash" >> .git/info/sparse-checkout
-git pull origin master
-git branch --set-upstream-to=origin/master master
-cd ../../
+rm -rf ~/master.zip && rm -rf ~/OpenClash-master && rm -rf openwrt/package/luci-app-openclash
+wget https://github.com/vernesong/OpenClash/archive/master.zip -O ~/master.zip
+unzip ~/master.zip -d ~/
+cp -r ~/OpenClash-master/luci-app-openclash openwrt/package
+
+#mkdir package/luci-app-openclash
+#cd package/luci-app-openclash
+#git init
+#git remote add -f origin https://github.com/vernesong/OpenClash.git
+#git config core.sparsecheckout true
+#echo "luci-app-openclash" >> .git/info/sparse-checkout
+#git pull origin master
+#git branch --set-upstream-to=origin/master master
+#cd ../../
