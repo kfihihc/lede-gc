@@ -28,7 +28,10 @@ sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.de
 rm -rf ~/master.zip && rm -rf ~/OpenClash-master && rm -rf openwrt/package/luci-app-openclash
 wget https://github.com/vernesong/OpenClash/archive/master.zip -O ~/master.zip
 unzip ~/master.zip -d ~/
-cp -r ~/OpenClash-master/luci-app-openclash openwrt/package
+# Workflow has been cd to openwrt dir, just cp to package dir
+# cd openwrt
+# $GITHUB_WORKSPACE/$DIY_P1_SH
+cp -r ~/OpenClash-master/luci-app-openclash package/
 
 #mkdir package/luci-app-openclash
 #cd package/luci-app-openclash
